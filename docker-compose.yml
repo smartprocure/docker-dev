@@ -1,0 +1,75 @@
+dev:
+  image: "busybox:latest"
+  volumes:
+# ssh is for git credentials
+    - "~/.ssh:/root/.ssh"
+# gitconfig is for git name, email, etx
+    - "~/.gitconfig:/root/.gitconfig"
+# where repos will live, which is not mapped to the host due to much slower io which makes running gulp tasks unusable slow (e.g. 30 + second commit times)
+    - "/workspace/code"
+# just a place to put stuff on the host since the repo lives in the vm
+    - "~/dev/sp:/workspace/transfer"
+ungit:
+  image: reinblau/ungit
+  volumes_from:
+    - dev
+  ports:
+    - "8448:8448"
+  command: /usr/bin/ungit --no-launchBrowser --forcedLaunchPath=/workspace
+cloud9:
+  image: sapk/cloud9
+  volumes_from:
+    - dev
+  ports:
+    - "8181:8181"
+    - "1080:80"
+    - "1337:1337"
+    - "3000:3000"
+  environment:
+    - NODE_ENV=development
+  links:
+    - rabbitmq
+    - mongo
+    - redis
+    - elasticsearch
+  command: "--auth username:password"
+data:
+  image: "busybox:latest"
+  volumes:
+    - /var/lib/rabbitmq
+    - /data
+    - /elasticsearch/data
+    - /usr/src/app/data
+rabbitmq:
+  image: "rabbitmq:management"
+  hostname: rabbitmq-dev
+  expose:
+    - "5672"
+  ports:
+    - "15672:15672"
+    - "5672:5672"
+  volumes_from:
+    - data
+mongo:
+  image: "mongo:latest"
+  hostname: mongo-dev
+  ports:
+    - "27017:27017"
+  volumes_from:
+    - data
+  command: mongod --smallfiles
+redis:
+  image: "redis:latest"
+  hostname: redis-dev
+  ports:
+    - "6379:6379"
+  volumes_from:
+    - data
+  command: redis-server --appendonly yes
+elasticsearch:
+  image: "smartprocure/elasticsearch:latest"
+  hostname: elasticsearch-dev
+  ports:
+    - "9200:9200"
+  volumes_from:
+    - data
