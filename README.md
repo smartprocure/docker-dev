@@ -1,12 +1,17 @@
 # docker-dev
 Dockerized Development Environment
 
+Quick Start
+-----------
+Just `docker-compose up`
+
 Prerequisites and Assumptions
 -----------------------------
-This assumes a *nix like environment, meaning you need:
-- SSH set up on your host at `~/.ssh` with a `id_rsa` that is not password protected (for now)
-- A `.gitconfig` in `~/.gitconfig`
-- Assumes you pull this down into `~/dev/sp` on your host (for now)
+- Install [Docker for Mac](https://www.docker.com/products/docker#/mac) (or windows if you're into that sort thing)
+- This assumes a *nix like environment, meaning you need:
+    - SSH set up on your host at `~/.ssh` with a `id_rsa` that is not password protected (for now)
+    - A `.gitconfig` in `~/.gitconfig`
+- *NOTE* This currently assumes you pull this down into `~/dev/sp` on your host (for now)
 
 Services
 --------
