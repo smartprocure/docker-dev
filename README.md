@@ -29,3 +29,7 @@ Good-to-Know Docker Compose Commands
 - docker-compose up: Start all the services in the docker-compose environment (create if it doesn't exist).
 - docker-compose stop: Stop all the services in the docker-compose environment
 - docker-compose down: Stop and *remove* all the services (this will wipe the data too)
+
+Some Cloud9 Tips
+----------------
+- Open a new terminal with `alt-t`
