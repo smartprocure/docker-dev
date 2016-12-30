@@ -33,3 +33,4 @@ Good-to-Know Docker Compose Commands
 Some Cloud9 Tips
 ----------------
 - Open a new terminal with `alt-t`
+- Run `npm i -g c9` to be able to open files in Cloud9 from a terminal with `c9 FILENAME` (our main application repo will do this for you)
