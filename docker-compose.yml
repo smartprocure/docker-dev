@@ -32,6 +32,8 @@ cloud9:
     - mongo
     - redis
     - elasticsearch
+    - logstash
+    - kibana
   command: "--auth username:password"
 data:
   image: "busybox:latest"
@@ -73,3 +75,23 @@ elasticsearch:
     - "9200:9200"
   volumes_from:
     - data
+logstash:
+  image: logstash:latest
+  hostname: logstash
+  command: logstash -f /etc/logstash/conf.d/logstash.conf
+  volumes:
+    - ./logstash/config:/etc/logstash/conf.d
+  ports:
+    - "5000:5000"
+  expose:
+    - "5000"
+  links:
+    - elasticsearch
+kibana:
+  build: kibana/
+  volumes:
+    - ./kibana/config/kibana.yml:/opt/kibana/config/kibana.yml
+  ports:
+    - "5601:5601"
+  links:
+    - elasticsearch
