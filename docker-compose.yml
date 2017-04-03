@@ -8,7 +8,7 @@ dev:
 # where repos will live, which is not mapped to the host due to much slower io which makes running gulp tasks unusable slow (e.g. 30 + second commit times)
     - "/workspace/code"
 # just a place to put stuff on the host since the repo lives in the vm
-    - "./dev/sp:/workspace/transfer"
+    - "./dev:/workspace/transfer"
 ungit:
   image: reinblau/ungit
   volumes_from:

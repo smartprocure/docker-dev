@@ -11,7 +11,7 @@ Prerequisites and Assumptions
 - This assumes a *nix like environment, meaning you need:
     - SSH set up on your host at `~/.ssh` with a `id_rsa` that is not password protected (for now)
     - A `.gitconfig` in `~/.gitconfig`
-- *NOTE* This currently assumes you pull this down into `~/dev/sp` on your host (for now)
+- *NOTE* This currently assumes you pull this down into `./dev`.
 
 Services
 --------
