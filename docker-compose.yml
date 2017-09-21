@@ -6,7 +6,7 @@ dev:
     - "~/.ssh:/root/.ssh"
     # gitconfig is for git name, email, etx
     - "~/.gitconfig:/root/.gitconfig"
-    # where repos will live, which is not mapped to the host due to much slower io which makes running gulp tasks unusable slow (e.g. 30 + second commit times)
+    # where repos will live. This will be map to the dev environment and accessed by the host using nfs
     - "/workspace/code"
     # just a place to put stuff on the host since the repo lives in the vm
     - "./dev:/workspace/transfer"
