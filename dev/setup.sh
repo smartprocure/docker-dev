@@ -23,4 +23,3 @@ NODE_VERSION="v7.10.0"
 nvm install $NODE_VERSION
 nvm use $NODE_VERSION
 nvm alias default $NODE_VERSION
-
