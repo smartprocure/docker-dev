@@ -2,8 +2,10 @@
 Dockerized Development Environment
 
 Quick Start
------------
-Just `docker-compose up`
+------------
+- Run `docker-compose up`
+- Open the following url http://localhost:8181
+- In a Cloud9 IDE terminal tab run `bash /workspace/transfer/setup.sh`
 
 Prerequisites and Assumptions
 -----------------------------
