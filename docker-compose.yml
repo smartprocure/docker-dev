@@ -5,7 +5,7 @@ data:
     - /data
     - /usr/src/app/data
 rabbitmq:
-  image: "rabbitmq:management"
+  image: "rabbitmq:3-management"
   hostname: rabbitmq-dev
   expose:
     - "5672"
@@ -15,7 +15,7 @@ rabbitmq:
   volumes_from:
     - data
 mongo:
-  image: "mongo:4.0.0"
+  image: "mongo:4"
   hostname: mongo-dev
   ports:
     - "27017:27017"
@@ -23,7 +23,7 @@ mongo:
     - data
   command: mongod --smallfiles
 redis:
-  image: "redis:latest"
+  image: "redis:5"
   hostname: redis-dev
   ports:
     - "6379:6379"
